@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praesentia — College Academic & CIE Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title-row">
+            <span class="brand-name">Praesentia</span>
+            <span class="status-badge">Official CIE Portal</span>
+          </div>
+          <p class="brand-sub">Chaitanya Bharathi Institute of Technology (A)</p>
+        </div>
+      </div>
+
+      <div id="user-controls" class="user-controls hidden">
+        <div class="user-info">
+          <div class="user-avatar" id="user-avatar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="user-meta">
+            <span class="user-name" id="user-display-name">User</span>
+            <span class="user-role" id="user-display-role">Role</span>
+          </div>
+        </div>
+        <button id="btn-logout" class="btn btn-secondary btn-sm" title="Sign Out">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Views Container -->
+  <main class="main-content">
+    
+    <!-- 1. LANDING / LOGIN VIEW -->
+    <section id="view-landing" class="view-section active">
+      <div class="landing-hero">
+        <div class="pill-chip">
+          <span class="dot"></span>
+          Academic & Continuous Internal Evaluation (CIE)
+        </div>
+        <h1 class="hero-title">Continuous Evaluation, <br><span class="gradient-text">Accurate & Transparent</span></h1>
+        <p class="hero-desc">
+          Unified academic platform for CBIT students to review verified internal scores and authorized faculty to enter Theory (Template A) and Dynamic Lab (Template C) evaluation records.
+        </p>
+
+        <div class="login-card">
+          <div class="tab-switcher">
+            <button id="tab-student" class="tab-btn active" data-tab="student">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+              Student Portal
+            </button>
+            <button id="tab-faculty" class="tab-btn" data-tab="faculty">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              Faculty Portal
+            </button>
+          </div>
+
+          <!-- Student Login Form -->
+          <form id="form-student-login" class="login-form active">
+            <div class="form-group">
+              <label for="student-roll">Student Roll Number</label>
+              <input type="text" id="student-roll" class="form-input" placeholder="e.g. 160125737071" value="160125737071" required>
+            </div>
+            <div class="demo-box">
+              <div class="demo-box-header">
+                <span class="demo-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Verified Demo Student
+                </span>
+                <span class="demo-role">Section IT-1</span>
+              </div>
+              <p class="demo-detail">Roll: <code>160125737071</code> &bull; Aarav Sharma &bull; Sem II</p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <span>Access Student CIE Dashboard</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </form>
+
+          <!-- Faculty Login Form -->
+          <form id="form-faculty-login" class="login-form">
+            <div class="form-group">
+              <label for="faculty-id">Faculty Employee ID</label>
+              <input type="text" id="faculty-id" class="form-input" placeholder="e.g. FAC-IT-101" value="FAC-IT-101" required>
+            </div>
+            <div class="demo-box">
+              <div class="demo-box-header">
+                <span class="demo-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Authorized Instructor
+                </span>
+                <span class="demo-role">IT Department</span>
+              </div>
+              <p class="demo-detail">ID: <code>FAC-IT-101</code> &bull; Dr. Sagar Gujjunoori &bull; Assoc. Professor</p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <span>Access Faculty CIE Workspace</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </form>
+
+          <p class="login-disclaimer">
+            Built strictly in Vanilla JavaScript, HTML5, and CSS3. Zero React/TS overhead. Sourced from CBIT academic regulations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. STUDENT DASHBOARD VIEW -->
+    <section id="view-student" class="view-section">
+      <div class="dashboard-container">
+        <!-- Student Profile Card -->
+        <div class="card profile-card">
+          <div class="profile-left">
+            <div class="profile-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="profile-name-row">
+                <h2 id="student-name-header" class="profile-name">Aarav Sharma</h2>
+                <span id="student-roll-badge" class="badge badge-blue">160125737071</span>
+              </div>
+              <p class="profile-desc">Information Technology &bull; Section IT-1 &bull; Semester II &bull; Academic Year 2025-26</p>
+            </div>
+          </div>
+          <div class="profile-right">
+            <div class="readonly-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Student Read-Only Mode (Official marks locked)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student CIE Panels Grid -->
+        <div class="grid-2col">
+          <!-- Theory CIE: Template A -->
+          <div class="card subject-card">
+            <div class="subject-header">
+              <div>
+                <span class="subject-tag">Template A &bull; Theory CIE</span>
+                <h3 class="subject-title">Data Structures using C++ <code class="code-tag">22ITC20N</code></h3>
+                <p class="subject-faculty">Course Coordinator: Dr. Sagar Gujjunoori</p>
+              </div>
+              <div class="score-display">
+                <div class="score-number" id="stu-theory-total">--<span class="score-denom"> / 40 M</span></div>
+                <div class="score-status verified" id="stu-theory-status">Verified CIE</div>
+              </div>
+            </div>
+
+            <div class="component-grid">
+              <div class="component-box">
+                <span class="comp-label">Class Tests (ACT)</span>
+                <div class="comp-val" id="stu-act-val">-- <span class="comp-max">/ 20</span></div>
+                <span class="comp-hint" id="stu-ct-hint">CT1: -- | CT2: --</span>
+              </div>
+              <div class="component-box">
+                <span class="comp-label">Assignments (AAss)</span>
+                <div class="comp-val" id="stu-aass-val">-- <span class="comp-max">/ 10</span></div>
+                <span class="comp-hint" id="stu-ass-hint">Ass-1: -- | Ass-2: --</span>
+              </div>
+              <div class="component-box">
+                <span class="comp-label">Slip Tests (AST)</span>
+                <div class="comp-val" id="stu-ast-val">-- <span class="comp-max">/ 5</span></div>
+                <span class="comp-hint">Best 2 of 3 Slip Tests</span>
+              </div>
+              <div class="component-box">
+                <span class="comp-label">Attendance (ATT)</span>
+                <div class="comp-val" id="stu-att-val">-- <span class="comp-max">/ 5</span></div>
+                <span class="comp-hint">Biometric Attendance Score</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lab CIE: Template C -->
+          <div class="card subject-card">
+            <div class="subject-header">
+              <div>
+                <span class="subject-tag tag-emerald">Template C &bull; Dynamic Lab Weekly CIE</span>
+                <h3 class="subject-title">Data Structures Lab <code class="code-tag">22ITC21N</code></h3>
+                <p class="subject-faculty">Continuous Weekly Lab Assessments</p>
+              </div>
+              <div class="score-display">
+                <div class="score-number" id="stu-lab-total">--<span class="score-denom"> / 30 M</span></div>
+                <div class="score-status" id="stu-lab-status">Average of Completed Weeks</div>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Week & Date</th>
+                    <th>PEP (5)</th>
+                    <th>EXP (10)</th>
+                    <th>PEA (5)</th>
+                    <th>Rec (5)</th>
+                    <th>Cond (5)</th>
+                    <th class="text-right">Total (30)</th>
+                  </tr>
+                </thead>
+                <tbody id="stu-lab-table-body">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Discrepancy Action Bar -->
+        <div class="student-actions-bar">
+          <button id="btn-student-discrepancy" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Report Mark Discrepancy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FACULTY WORKSPACE VIEW -->
+    <section id="view-faculty" class="view-section">
+      <div class="dashboard-container">
+        <!-- Faculty Workspace Header Card -->
+        <div class="card profile-card">
+          <div class="profile-left">
+            <div class="profile-icon icon-faculty">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="profile-name-row">
+                <h2 class="profile-name">Dr. Sagar Gujjunoori</h2>
+                <span class="badge badge-indigo">Faculty Authorized</span>
+              </div>
+              <p class="profile-desc">Associate Professor &bull; Department of Information Technology &bull; Academic Year 2025-26</p>
+            </div>
+          </div>
+
+          <div class="course-selector-wrap">
+            <label for="faculty-course-select" class="selector-label">Assigned Course:</label>
+            <select id="faculty-course-select" class="form-select">
+              <option value="22ITC20N">Data Structures using C++ (22ITC20N) — Template A Theory</option>
+              <option value="22ITC21N">Data Structures Lab (22ITC21N) — Template C Dynamic Lab</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Live Class Analytics Bar -->
+        <div class="analytics-bar">
+          <div class="stat-card">
+            <div class="stat-icon blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-title">Class CIE Average</span>
+              <span class="stat-value" id="stat-avg">--</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-title">Highest Score</span>
+              <span class="stat-value" id="stat-high">--</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-title">Pass Percentage</span>
+              <span class="stat-value" id="stat-pass">--</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-title">At-Risk Students</span>
+              <span class="stat-value" id="stat-risk">--</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty Toolbar: Search, Add Student, Export -->
+        <div class="workspace-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="faculty-search-input" class="search-input" placeholder="Search roll no or student name...">
+            </div>
+            <button id="btn-add-student" class="btn btn-secondary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Enroll Student</span>
+            </button>
+          </div>
+
+          <div class="toolbar-right">
+            <button id="btn-export-csv" class="btn btn-secondary btn-sm" title="Download CSV">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Export CSV</span>
+            </button>
+            <button id="btn-export-json" class="btn btn-secondary btn-sm" title="Download JSON">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              <span>Export JSON</span>
+            </button>
+            <button id="btn-print-report" class="btn btn-secondary btn-sm" title="Print Sheet">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              <span>Print Sheet</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- TEMPLATE A: THEORY SPREADSHEET WORKSPACE -->
+        <div id="faculty-template-a" class="card workspace-panel active">
+          <div class="workspace-header">
+            <div>
+              <div class="panel-badge-row">
+                <span class="subject-tag">Template A: Theory CIE Entry</span>
+                <span class="section-tag">Section IT-1 &bull; Sem II</span>
+              </div>
+              <h3 class="panel-title">Data Structures using C++ (22ITC20N)</h3>
+              <p class="panel-sub">Total CIE Max: 40 M (ACT 20 + AAss 10 + AST 5 + ATT 5). Live auto-calculation matching official CBIT template.</p>
+            </div>
+
+            <div class="action-btn-row">
+              <span id="save-status-a" class="save-status-pill saved"><span class="indicator-dot dot-emerald"></span> All changes saved</span>
+              <button id="btn-save-a" class="btn btn-primary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                  <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                  <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                <span>Save Theory Marks</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="table-container spreadsheet-wrap">
+            <table class="spreadsheet-table" id="table-template-a">
+              <thead>
+                <tr>
+                  <th rowspan="2" class="col-sno">S.No</th>
+                  <th rowspan="2" class="col-roll">Roll No</th>
+                  <th rowspan="2" class="col-name">Student Name</th>
+                  <th colspan="3" class="col-group group-ct">Class Tests (Max 20)</th>
+                  <th colspan="3" class="col-group group-ass">Assignments (Max 10)</th>
+                  <th colspan="4" class="col-group group-st">Slip Tests (Max 5)</th>
+                  <th rowspan="2" class="col-att">ATT (5)</th>
+                  <th rowspan="2" class="col-total">Total (40)</th>
+                </tr>
+                <tr class="subhead-row">
+                  <th>CT1 (20)</th>
+                  <th>CT2 (20)</th>
+                  <th class="col-calc">ACT (20)</th>
+                  <th>Ass-1 (10)</th>
+                  <th>Ass-2 (10)</th>
+                  <th class="col-calc">AAss (10)</th>
+                  <th>ST1 (5)</th>
+                  <th>ST2 (5)</th>
+                  <th>ST3 (5)</th>
+                  <th class="col-calc">AST (5)</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-template-a">
+                <!-- Dynamically populated by facultyView.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TEMPLATE C: DYNAMIC LAB WORKSPACE -->
+        <div id="faculty-template-c" class="card workspace-panel">
+          <div class="workspace-header">
+            <div>
+              <div class="panel-badge-row">
+                <span class="subject-tag tag-emerald">Template C: Dynamic Lab Weekly CIE</span>
+                <span class="section-tag">Dynamic Week Management</span>
+              </div>
+              <h3 class="panel-title">Data Structures Lab (22ITC21N)</h3>
+              <p class="panel-sub">Weekly Components: PEP (5), EXP (10), PEA (5), Record (5), Conduct (5) = Weekly Total 30 M.</p>
+            </div>
+
+            <div class="action-btn-row">
+              <span id="save-status-c" class="save-status-pill saved"><span class="indicator-dot dot-emerald"></span> All changes saved</span>
+              <button id="btn-add-week" class="btn btn-secondary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Add Lab Week</span>
+              </button>
+              <button id="btn-save-c" class="btn btn-primary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                  <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                  <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                <span>Save Lab Marks</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="week-filter-bar">
+            <div class="week-filter-left">
+              <span class="filter-label">Active Week:</span>
+              <div id="week-pill-container" class="week-pill-group">
+                <!-- Dynamically populated week buttons -->
+              </div>
+            </div>
+          </div>
+
+          <div class="table-container spreadsheet-wrap">
+            <table class="spreadsheet-table" id="table-template-c">
+              <thead>
+                <tr>
+                  <th class="col-sno">S.No</th>
+                  <th class="col-roll">Roll No</th>
+                  <th class="col-name">Student Name</th>
+                  <th>PEP (5)</th>
+                  <th>EXP (10)</th>
+                  <th>PEA (5)</th>
+                  <th>Rec (5)</th>
+                  <th>Cond (5)</th>
+                  <th class="col-calc">Week Total (30)</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-template-c">
+                <!-- Dynamically populated lab week entries -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reusable Modal Backdrop -->
+  <div id="modal-backdrop" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-title">Modal Title</h3>
+        <button id="modal-close" class="modal-close" title="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+      <div id="modal-footer" class="modal-footer"></div>
+    </div>
+  </div>
+
+  <!-- Entry Script -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
